@@ -1,10 +1,14 @@
+"use client"
 import AppContainerComponent from "@/components/AppContainerComponent";
+import {AppContextProvider} from "@/app/AppContext";
 
 export default function Home() {
 
   return (
       <div className="app">
-        <AppContainerComponent />
+          <AppContextProvider>
+              <AppContainerComponent />
+          </AppContextProvider>
       </div>
   )
 }
