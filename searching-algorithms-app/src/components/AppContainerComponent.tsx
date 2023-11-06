@@ -4,8 +4,8 @@ import ContentPageComponent from '@/components/ContentPage/ContentPageComponent'
 import QuizComponent from '@/components/Quiz/QuizComponent';
 
 const AppContainerComponent: React.FC = () => {
-    var showHome = false;
-    var showContent = true;
+    var showHome = true;
+    var showContent = false;
     var showQuiz = false;
 
     return (

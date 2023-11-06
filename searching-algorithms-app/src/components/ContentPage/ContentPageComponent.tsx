@@ -12,7 +12,11 @@ import QuizComponent from "@/components/Quiz/QuizComponent";
 
 
 export default function ContentPageComponent() {
-    var videoLink = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
+    const topicTitle = 'Linear Search';
+    const topicSummary: string = `
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim varius nibh, ut tristique leo facilisis quis. Ut at tellus sed nulla mattis tempor. Mauris quis lectus ligula. Pellentesque id lectus non enim suscipit gravida eu vel nisl. Donec dolor lacus, faucibus nec cursus quis, bibendum non nisl. Maecenas pretium egestas nisl, vitae tempor urna tempor nec. Donec leo neque, efficitur vitae arcu et, blandit tristique justo. Duis pellentesque id ex sit amet semper. Etiam dictum, massa fringilla finibus rhoncus, turpis justo fermentum purus, et egestas purus massa non quam. Praesent egestas pharetra rutrum. Sed tempus mauris vel placerat cursus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.`;
+
+
 
     return (
         <Tabs aria-label="Basic tabs" defaultValue={0}>
@@ -21,13 +25,19 @@ export default function ContentPageComponent() {
                 <Tab>Text</Tab>
             </TabList>
             <TabPanel value={0}>
-                <Video />
-                <TopicContentComponent/>
-                <ButtonComponent/>
+                <ButtonComponent text='Back Home' alignment='left'/>
+                <div style={{paddingTop: '10px'}}>
+                    <Video />
+                    <TopicContentComponent title={topicTitle} summary={topicSummary}/>
+                    <ButtonComponent text='Start Quiz' alignment='center'/>
+                </div>
             </TabPanel>
             <TabPanel value={1}>
-                <VideoDescriptionComponent/>
-                <ButtonComponent/>
+                <ButtonComponent text='Back Home' alignment='left'/>
+                <div style={{paddingTop: '10px'}}>
+                    <VideoDescriptionComponent/>
+                </div>
+                <ButtonComponent text='Start Quiz' alignment='center'/>
             </TabPanel>
         </Tabs>
     );
