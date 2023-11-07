@@ -2,6 +2,8 @@
 import React from 'react';
 import {AssessmentQuestionDetails} from "@/app/interfaces/assessment-question-details";
 
+import styles from '../../styles/quiz.module.css'
+
 export default function AssessmentQuestionComponent({questionNumber, questionText, answerOne, answerTwo, answerThree, answerFour, correctAnswerNumber}: AssessmentQuestionDetails) {
 
     return (
@@ -13,14 +15,14 @@ export default function AssessmentQuestionComponent({questionNumber, questionTex
                 </p>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <div style={{ border: '2px solid lightgray', padding: '10px', flex: 1, marginRight: '10px' }}>{answerOne}</div>
-                <div style={{ border: '2px solid lightgray', padding: '10px', flex: 1 }}>{answerTwo}</div>
+            <div className={styles.answerCard}>
+                <button className={styles.answerButton}>{answerOne}</button>
+                <button className={styles.answerButton}>{answerTwo}</button>
             </div>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
-                <div style={{ border: '2px solid lightgray', padding: '10px', flex: 1, marginRight: '10px' }}>{answerThree}</div>
-                <div style={{ border: '2px solid lightgray', padding: '10px', flex: 1 }}>{answerFour}</div>
+            <div className={styles.answerCard}>
+                <button className={styles.answerButton}>{answerThree}</button>
+                <button className={styles.answerButton}>{answerFour}</button>
             </div>
 
         </div>
