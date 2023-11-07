@@ -73,7 +73,12 @@ export default function QuizComponent() {
         if(currentQuestion < quizQuestions.length-1){
             setCurrentQuestion(prevQuestion => prevQuestion + 1);
         }
+    };
 
+    const handlePreviousQuestion = () => {
+        if(currentQuestion < quizQuestions.length){
+            setCurrentQuestion(prevQuestion => prevQuestion - 1);
+        }
     };
 
     return (
@@ -103,11 +108,17 @@ export default function QuizComponent() {
                 correctAnswerNumber={quizQuestions[currentQuestion].correctAnswerNumber}
             />
 
-            <div style={{ marginTop: '30px' }}>
+            { currentQuestion > 0 && currentQuestion < quizQuestions.length &&  <div style={{ marginTop: '30px' }}>
+                <Button variant="contained" color="primary" onClick={handlePreviousQuestion}>
+                    Previous
+                </Button>
+            </div>}
+
+            { currentQuestion < quizQuestions.length - 1 && <div style={{ marginTop: '15px' }}>
                 <Button variant="contained" color="primary" onClick={handleNextQuestion}>
                     Next
                 </Button>
-            </div>
+            </div>}
         </div>
     );
 }
