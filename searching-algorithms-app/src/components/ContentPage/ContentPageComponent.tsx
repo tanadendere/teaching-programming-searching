@@ -26,7 +26,7 @@ export default function ContentPageComponent() {
             </TabList>
             <TabPanel value={0}>
                 <ButtonComponent text='Back Home' alignment='left'/>
-                <div style={{paddingTop: '10px'}}>
+                <div style={{paddingTop: '10px', height: '80vh'}}>
                     <Video />
                     <TopicContentComponent title={topicTitle} summary={topicSummary}/>
                     <ButtonComponent text='Start Quiz' alignment='center'/>

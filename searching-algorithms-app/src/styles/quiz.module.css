@@ -1,0 +1,22 @@
+.answerCard {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 20px;
+}
+
+
+.answerButton {
+    border: 2px solid #DDD9D9;
+    border-radius: 2vh;
+    padding: 10px;
+    flex: 1;
+    margin-right: 10px; 
+    cursor: pointer;
+    background-color: white;
+}
+
+.answerButton:hover {
+    background-color:rgb(151, 151, 255);
+}
+
+

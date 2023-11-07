@@ -6,10 +6,10 @@ import Card from "@mui/joy/Card";
 export default function Video() {
     return (
         <div>
-            <Card component="li" sx={{ minWidth: 300, flexGrow: 1 }} >
+            <Card component="li" sx={{ minWidth: 300, minHeight: '40vh', flexGrow: 1 }} >
                 <CardCover>
                     <video
-                        autoPlay
+                        controls
                         loop
                         muted
                         poster="https://assets.codepen.io/6093409/river.jpg"
@@ -20,7 +20,7 @@ export default function Video() {
                         />
                     </video>
                 </CardCover>
-                <CardContent>
+                {/* <CardContent>
                     <Typography
                         level="body-lg"
                         fontWeight="lg"
@@ -29,7 +29,7 @@ export default function Video() {
                     >
                         Video
                     </Typography>
-                </CardContent>
+                </CardContent> */}
             </Card>
         </div>
 

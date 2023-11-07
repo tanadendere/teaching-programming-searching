@@ -1,0 +1,8 @@
+.pageItems {
+    max-width: 300vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 5vh;
+    justify-content: center;
+    position: relative
+}

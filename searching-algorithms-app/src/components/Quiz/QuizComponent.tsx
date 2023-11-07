@@ -78,7 +78,7 @@ export default function QuizComponent() {
 
     return (
         <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
-            <h1 style={{ fontSize: '40px', textAlign: 'center' }}>Linear Search Quiz</h1>
+            <h1 style={{ fontSize: '40px' }}>Linear Search Quiz</h1>
 
             <div style={{ textAlign: 'center', margin: '20px 0' }}>
                 <Button variant="outlined" onClick={handleHintModalOpen}>
