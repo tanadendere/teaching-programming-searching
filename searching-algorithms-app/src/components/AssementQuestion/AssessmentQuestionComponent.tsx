@@ -5,7 +5,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 
 import styles from '../../styles/quiz.module.css'
 
-export default function AssessmentQuestionComponent({questionNumber, questionText, answerOne, answerTwo, answerThree, answerFour, correctAnswerNumber}: AssessmentQuestionDetails) {
+export default function AssessmentQuestionComponent({questionNumber, questionText, answerOne, answerTwo, answerThree, answerFour, correctAnswerNumber, isFinalAssessment}: AssessmentQuestionDetails) {
 
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [openFeedback, setOpenFeedback] = useState(false);
@@ -67,7 +67,7 @@ export default function AssessmentQuestionComponent({questionNumber, questionTex
                 </button>
             </div>
 
-            <Dialog open={openFeedback} onClose={handleClose}>
+            {!isFinalAssessment && <Dialog open={openFeedback} onClose={handleClose}>
                 <DialogTitle>
                     {selectedAnswer === correctAnswerNumber &&
                         <div style={{ color: 'green' }}><strong>Correct Answer!</strong></div>}
@@ -87,7 +87,7 @@ export default function AssessmentQuestionComponent({questionNumber, questionTex
                         Close
                     </Button>
                 </DialogActions>
-            </Dialog>
+            </Dialog>}
         </div>
     );
 

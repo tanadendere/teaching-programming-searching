@@ -27,7 +27,8 @@ export default function QuizComponent() {
             answerTwo: 'Second Answer',
             answerThree: 'Third Answer',
             answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4
+            correctAnswerNumber: 4,
+            isFinalAssessment: false
         },
         {
             questionNumber: 2,
@@ -36,7 +37,8 @@ export default function QuizComponent() {
             answerTwo: 'Second Answer(and correct)',
             answerThree: 'Third Answer',
             answerFour: 'Fourth Answer ',
-            correctAnswerNumber: 2
+            correctAnswerNumber: 2,
+            isFinalAssessment: false
         },
         {
             questionNumber: 3,
@@ -45,7 +47,8 @@ export default function QuizComponent() {
             answerTwo: 'Second Answer',
             answerThree: 'Third Answer',
             answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4
+            correctAnswerNumber: 4,
+            isFinalAssessment: false
         },
         {
             questionNumber: 4,
@@ -54,7 +57,8 @@ export default function QuizComponent() {
             answerTwo: 'Second Answer',
             answerThree: 'Third Answer',
             answerFour: 'Fourth Answer ',
-            correctAnswerNumber: 1
+            correctAnswerNumber: 1,
+            isFinalAssessment: false
         },
         {
             questionNumber: 5,
@@ -63,7 +67,8 @@ export default function QuizComponent() {
             answerTwo: 'Second Answer',
             answerThree: 'Third Answer',
             answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4
+            correctAnswerNumber: 4,
+            isFinalAssessment: false
         }
     ]
 
@@ -106,6 +111,7 @@ export default function QuizComponent() {
                 answerThree={quizQuestions[currentQuestion].answerThree}
                 answerFour={quizQuestions[currentQuestion].answerFour}
                 correctAnswerNumber={quizQuestions[currentQuestion].correctAnswerNumber}
+                isFinalAssessment={quizQuestions[currentQuestion].isFinalAssessment}
             />
 
             { currentQuestion > 0 && currentQuestion < quizQuestions.length &&  <div style={{ marginTop: '30px' }}>

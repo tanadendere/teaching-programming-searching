@@ -4,6 +4,7 @@ export interface AssessmentQuestionDetails {
     answerOne: string,
     answerTwo: string,
     answerThree: string,
-    answerFour: string
-    correctAnswerNumber: number
+    answerFour: string,
+    correctAnswerNumber: number,
+    isFinalAssessment: boolean
 }
