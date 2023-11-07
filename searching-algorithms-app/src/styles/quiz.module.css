@@ -19,10 +19,7 @@
 }
 
 .selectedAnswer {
-    background-color: green;
+    background-color: blue;
 }
 
-.wrongAnswer {
-    background-color: red;
-}
 
