@@ -15,7 +15,8 @@ export default function AssessmentComponent() {
             answerTwo: 'Second Answer',
             answerThree: 'Third Answer',
             answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4
+            correctAnswerNumber: 4,
+            isFinalAssessment: true
         },
         {
             questionNumber: 2,
@@ -24,7 +25,8 @@ export default function AssessmentComponent() {
             answerTwo: 'Second Answer(and correct)',
             answerThree: 'Third Answer',
             answerFour: 'Fourth Answer ',
-            correctAnswerNumber: 2
+            correctAnswerNumber: 2,
+            isFinalAssessment: true
         },
         {
             questionNumber: 3,
@@ -33,7 +35,8 @@ export default function AssessmentComponent() {
             answerTwo: 'Second Answer',
             answerThree: 'Third Answer',
             answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4
+            correctAnswerNumber: 4,
+            isFinalAssessment: true
         },
         {
             questionNumber: 4,
@@ -42,7 +45,8 @@ export default function AssessmentComponent() {
             answerTwo: 'Second Answer',
             answerThree: 'Third Answer',
             answerFour: 'Fourth Answer ',
-            correctAnswerNumber: 1
+            correctAnswerNumber: 1,
+            isFinalAssessment: true
         },
         {
             questionNumber: 5,
@@ -51,7 +55,8 @@ export default function AssessmentComponent() {
             answerTwo: 'Second Answer',
             answerThree: 'Third Answer',
             answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4
+            correctAnswerNumber: 4,
+            isFinalAssessment: true
         }
     ]
 
@@ -65,6 +70,7 @@ export default function AssessmentComponent() {
                         key={question.questionNumber} questionNumber={question.questionNumber}
                         questionText={question.questionText} answerOne={question.answerOne} answerTwo={question.answerTwo}
                         answerThree={question.answerThree} answerFour={question.answerFour} correctAnswerNumber={question.correctAnswerNumber}
+                        isFinalAssessment={question.isFinalAssessment}
                     />
                 ))}
             </div>
