@@ -6,5 +6,6 @@ export interface AssessmentQuestionDetails {
     answerThree: string,
     answerFour: string,
     correctAnswerNumber: number,
-    isFinalAssessment: boolean
+    isFinalAssessment: boolean,
+    onAnswerClick: (selectedAnswerNumber: number, correctAnswerNumber: number) => void;
 }
