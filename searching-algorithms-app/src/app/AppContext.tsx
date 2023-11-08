@@ -17,6 +17,14 @@ interface AppContextProps {
     setAlgorithmType: Dispatch<SetStateAction<AlgorithmType>>;
     assessmentData: AssessmentData,
     setAssessmentData: Dispatch<SetStateAction<AssessmentData>>;
+    linearQuizCompleted: boolean,
+    setLinearQuizCompleted: Dispatch<SetStateAction<boolean>>;
+    binaryQuizCompleted: boolean,
+    setBinaryQuizCompleted: Dispatch<SetStateAction<boolean>>;
+    hashingQuizCompleted: boolean,
+    setHashingQuizCompleted: Dispatch<SetStateAction<boolean>>;
+    finalAssessmentSubmitted: boolean,
+    setfinalAssessmentSubmitted: Dispatch<SetStateAction<boolean>>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -37,9 +45,19 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({ children
         quizQuestions: finalAssessmentQuestions,
         quizHints: finalAssessmentHints
     } as AssessmentData);
+    const [linearQuizCompleted, setLinearQuizCompleted] = useState(false);
+    const [binaryQuizCompleted, setBinaryQuizCompleted] = useState(false);
+    const [hashingQuizCompleted, setHashingQuizCompleted] = useState(false);
+    const [finalAssessmentSubmitted, setfinalAssessmentSubmitted] = useState(false);
+
+
 
     return (
-        <AppContext.Provider value={{ showHome, setShowHome, showContent, setShowContent, showQuiz, setShowQuiz, showAssessment, setShowAssessment, quizData, setQuizData, algorithmType, setAlgorithmType, assessmentData, setAssessmentData }}>
+        <AppContext.Provider value={{
+            showHome, setShowHome, showContent, setShowContent, showQuiz, setShowQuiz, showAssessment,
+            setShowAssessment, quizData, setQuizData, algorithmType, setAlgorithmType, assessmentData, setAssessmentData,
+            linearQuizCompleted, setLinearQuizCompleted, binaryQuizCompleted, setBinaryQuizCompleted,
+            hashingQuizCompleted, setHashingQuizCompleted, finalAssessmentSubmitted, setfinalAssessmentSubmitted}}>
             {children}
         </AppContext.Provider>
     );

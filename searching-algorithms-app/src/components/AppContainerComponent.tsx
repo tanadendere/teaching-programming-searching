@@ -9,7 +9,9 @@ import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
 
 const AppContainerComponent: React.FC = () => {
     const { showHome, showContent, showQuiz, setShowHome,
-        setShowContent, setShowQuiz, showAssessment, setShowAssessment, quizData, setQuizData, assessmentData } = useAppContext();
+        setShowContent, setShowQuiz, showAssessment
+        , setShowAssessment, quizData, setQuizData,
+        assessmentData } = useAppContext();
 
     const handleHomeButtonClick = () => {
         setShowHome(true);

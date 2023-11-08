@@ -15,7 +15,10 @@ export default function QuizComponent({quizQuestions, quizHints}: AssessmentData
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
-    const { setShowHome, setShowQuiz } = useAppContext();
+    const {
+        setShowHome, setShowQuiz, algorithmType,
+        setLinearQuizCompleted, setBinaryQuizCompleted, setHashingQuizCompleted
+    } = useAppContext();
 
     const handleHintModalOpen = () => {
         setHintModalOpen(true);
@@ -45,6 +48,17 @@ export default function QuizComponent({quizQuestions, quizHints}: AssessmentData
 
     const handleComplete = () => {
         setShowScore(true);
+
+        if(algorithmType.type === 'linear'){
+            setLinearQuizCompleted(true)
+        }
+        else if(algorithmType.type === 'binary'){
+            setBinaryQuizCompleted(true)
+        }
+        else if(algorithmType.type === 'hashing'){
+            setHashingQuizCompleted(true)
+        }
+
     };
 
     const handleClose = () => {

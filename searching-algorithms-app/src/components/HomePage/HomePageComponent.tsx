@@ -1,5 +1,6 @@
 import * as React from 'react';
 import VideoCardComponent from "@/components/VideoCard/VideoCardComponent";
+import { useNavigate } from "react-router-dom";
 
 import styles from "@/styles/homepage.module.css";
 import _lessons from '@/app/resources/lessons.json';
@@ -13,14 +14,14 @@ export default function HomePageComponent() {
             <div className={styles.header}>
                 <h1>Learn2Search</h1>
             </div>
-            
+
             <div className={styles.pageItems}>
                 {videos.map((video, i) => (
-                    <VideoCardComponent key={i} 
-                        url={video.url} 
-                        title={video.title} 
-                        description={video.description} 
-                        text={video.text} 
+                    <VideoCardComponent key={i}
+                        url={video.url}
+                        title={video.title}
+                        description={video.description}
+                        text={video.text}
                     />
                 ))}
             </div>
