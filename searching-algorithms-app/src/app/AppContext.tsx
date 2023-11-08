@@ -1,4 +1,5 @@
 import React, {createContext, useContext, ReactNode, Dispatch, SetStateAction, useState} from 'react';
+import {QuizData} from "@/app/interfaces/assessment-question-details";
 
 interface AppContextProps {
     showHome: boolean;
@@ -9,6 +10,8 @@ interface AppContextProps {
     setShowQuiz: Dispatch<SetStateAction<boolean>>;
     showAssessment: boolean;
     setShowAssessment: Dispatch<SetStateAction<boolean>>;
+    quizData: QuizData,
+    setQuizData: Dispatch<SetStateAction<QuizData>>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -18,9 +21,13 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({ children
     const [showContent, setShowContent] = useState(true);
     const [showQuiz, setShowQuiz] = useState(false);
     const [showAssessment, setShowAssessment] = useState(false);
+    const [quizData, setQuizData] = useState({
+        quizQuestions: [],
+        quizHints: []
+    } as QuizData);
 
     return (
-        <AppContext.Provider value={{ showHome, setShowHome, showContent, setShowContent, showQuiz, setShowQuiz, showAssessment, setShowAssessment }}>
+        <AppContext.Provider value={{ showHome, setShowHome, showContent, setShowContent, showQuiz, setShowQuiz, showAssessment, setShowAssessment, quizData, setQuizData }}>
             {children}
         </AppContext.Provider>
     );

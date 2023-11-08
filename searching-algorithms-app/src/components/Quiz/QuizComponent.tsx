@@ -5,11 +5,12 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import AssessmentQuestionComponent from "@/components/AssementQuestion/AssessmentQuestionComponent";
-import { AssessmentQuestionDetails } from "@/app/interfaces/assessment-question-details";
+import {AssessmentQuestionDetails, QuizData} from "@/app/interfaces/assessment-question-details";
 import {DialogActions, DialogContentText} from "@mui/material";
 import {useAppContext} from "@/app/AppContext";
+import {linearQuizQuestions, linearQuizHints} from "@/app/resources/system-data/quiz-data";
 
-export default function QuizComponent() {
+export default function QuizComponent({quizQuestions, quizHints}: QuizData) {
     const [isHintModalOpen, setHintModalOpen] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
@@ -23,66 +24,6 @@ export default function QuizComponent() {
     const handleHintModalClose = () => {
         setHintModalOpen(false);
     };
-
-    const quizQuestions: AssessmentQuestionDetails[] = [
-        {
-            questionNumber: 1,
-            questionText: 'The first question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4,
-            isFinalAssessment: false,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 2,
-            questionText: 'The second question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer(and correct)',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer ',
-            correctAnswerNumber: 2,
-            isFinalAssessment: false,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 3,
-            questionText: 'The third question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4,
-            isFinalAssessment: false,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 4,
-            questionText: 'The fourth question?',
-            answerOne: 'First Answer(and correct)',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer ',
-            correctAnswerNumber: 1,
-            isFinalAssessment: false,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 5,
-            questionText: 'The fifth question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4,
-            isFinalAssessment: false,
-            onAnswerClick: () => {}
-        }
-    ]
-
-    const quizHints = ['Q1 Hint', 'Q2 Hint', 'Q3 Hint', 'Q4 Hint', 'Q5 Hint'];
 
     const handleNextQuestion = () => {
         if(currentQuestion < quizQuestions.length-1){

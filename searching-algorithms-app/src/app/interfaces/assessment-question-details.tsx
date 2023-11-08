@@ -9,3 +9,8 @@ export interface AssessmentQuestionDetails {
     isFinalAssessment: boolean,
     onAnswerClick: (selectedAnswerNumber: number, correctAnswerNumber: number) => void;
 }
+
+export interface QuizData {
+    quizQuestions: AssessmentQuestionDetails[],
+    quizHints: string[]
+}

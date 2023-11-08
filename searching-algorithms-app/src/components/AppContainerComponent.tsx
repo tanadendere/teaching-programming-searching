@@ -4,11 +4,12 @@ import ContentPageComponent from '@/components/ContentPage/ContentPageComponent'
 import QuizComponent from '@/components/Quiz/QuizComponent';
 import { useAppContext } from "@/app/AppContext";
 import AssessmentComponent from "@/components/Assessment/AssessmentComponent";
+import {hashingQuizData} from "@/app/resources/system-data/quiz-data";
 import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
 
 const AppContainerComponent: React.FC = () => {
     const { showHome, showContent, showQuiz, setShowHome,
-        setShowContent, setShowQuiz, showAssessment, setShowAssessment } = useAppContext();
+        setShowContent, setShowQuiz, showAssessment, setShowAssessment, quizData, setQuizData } = useAppContext();
 
     const handleHomeButtonClick = () => {
         setShowHome(true);
@@ -29,6 +30,7 @@ const AppContainerComponent: React.FC = () => {
         setShowContent(false);
         setShowQuiz(true);
         setShowAssessment(false);
+        setQuizData(hashingQuizData);
     };
 
     const handleAssessmentButtonClick = () => {
@@ -49,16 +51,16 @@ const AppContainerComponent: React.FC = () => {
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" 
-                        element={<HomePageComponent/>} /> 
+                    <Route path="/"
+                        element={<HomePageComponent/>} />
 
-                    <Route path="/content" 
-                        element={<ContentPageComponent />} /> 
+                    <Route path="/content"
+                        element={<ContentPageComponent />} />
                 </Routes>
-                    
+
             </BrowserRouter >
         </>
-        
+
         // <Router location={''} navigator={undefined}>
         //     <div>
         //         <Route path="/" element={<HomePageComponent/>}/>
@@ -86,7 +88,7 @@ const AppContainerComponent: React.FC = () => {
         //         </Route>
         //     </Routes>
         // </BrowserRouter>
-        
+
     );
 };
 
