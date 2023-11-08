@@ -5,12 +5,12 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import AssessmentQuestionComponent from "@/components/AssementQuestion/AssessmentQuestionComponent";
-import {AssessmentQuestionDetails, QuizData} from "@/app/interfaces/assessment-question-details";
+import {AssessmentQuestionDetails, AssessmentData} from "@/app/interfaces/assessment-question-details";
 import {DialogActions, DialogContentText} from "@mui/material";
 import {useAppContext} from "@/app/AppContext";
 import {linearQuizQuestions, linearQuizHints} from "@/app/resources/system-data/quiz-data";
 
-export default function QuizComponent({quizQuestions, quizHints}: QuizData) {
+export default function QuizComponent({quizQuestions, quizHints}: AssessmentData) {
     const [isHintModalOpen, setHintModalOpen] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);

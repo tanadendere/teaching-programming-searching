@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import AssessmentQuestionComponent from "@/components/AssementQuestion/AssessmentQuestionComponent";
-import {AssessmentQuestionDetails} from "@/app/interfaces/assessment-question-details";
+import {AssessmentData, AssessmentQuestionDetails} from "@/app/interfaces/assessment-question-details";
 import VideoCardComponent from "@/components/VideoCard/VideoCardComponent";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -10,69 +10,11 @@ import DialogContent from "@mui/material/DialogContent";
 import {DialogActions, DialogContentText} from "@mui/material";
 import {useAppContext} from "@/app/AppContext";
 
-export default function AssessmentComponent() {
+export default function AssessmentComponent({quizQuestions, quizHints}: AssessmentData) {
 
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
     const { setShowHome, setShowAssessment } = useAppContext();
-
-    const assessmentQuestions: AssessmentQuestionDetails[] = [
-        {
-            questionNumber: 1,
-            questionText: 'The first question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4,
-            isFinalAssessment: true,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 2,
-            questionText: 'The second question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer(and correct)',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer ',
-            correctAnswerNumber: 2,
-            isFinalAssessment: true,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 3,
-            questionText: 'The third question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4,
-            isFinalAssessment: true,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 4,
-            questionText: 'The fourth question?',
-            answerOne: 'First Answer(and correct)',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer ',
-            correctAnswerNumber: 1,
-            isFinalAssessment: true,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 5,
-            questionText: 'The fifth question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4,
-            isFinalAssessment: true,
-            onAnswerClick: () => {}
-        }
-    ]
 
     const handleAnswerClick = (selectedAnswerNumber: number, correctAnswerNumber: number) => {
         if (selectedAnswerNumber === correctAnswerNumber) {
@@ -95,7 +37,7 @@ export default function AssessmentComponent() {
             <h1 style={{ fontSize: '40px' }}> Searching Final Assessment </h1>
 
             <div>
-                {assessmentQuestions.map((question) => (
+                {quizQuestions.map((question) => (
                     <AssessmentQuestionComponent
                         key={question.questionNumber} questionNumber={question.questionNumber}
                         questionText={question.questionText} answerOne={question.answerOne} answerTwo={question.answerTwo}
@@ -123,12 +65,12 @@ export default function AssessmentComponent() {
 
                         <DialogContent>
                             <DialogContentText>
-                                {score >=  4
-                                    ? `Well done, you scored: ${score/5 * 100}%`
-                                    : `Nice try, you scored: ${score/5 * 100}%`}
+                                {score >=  8
+                                    ? `Well done, you scored: ${score/10 * 100}%`
+                                    : `Nice try, you scored: ${score/10 * 100}%`}
                             </DialogContentText>
                             <DialogContentText>
-                                Final Score: {score}/5
+                                Final Score: {score}/10
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>

@@ -1,5 +1,6 @@
 import React, {createContext, useContext, ReactNode, Dispatch, SetStateAction, useState} from 'react';
-import {QuizData} from "@/app/interfaces/assessment-question-details";
+import {AssessmentData, AlgorithmType} from "@/app/interfaces/assessment-question-details";
+import {finalAssessmentHints, finalAssessmentQuestions} from "@/app/resources/system-data/final-assessment-data";
 
 interface AppContextProps {
     showHome: boolean;
@@ -10,8 +11,12 @@ interface AppContextProps {
     setShowQuiz: Dispatch<SetStateAction<boolean>>;
     showAssessment: boolean;
     setShowAssessment: Dispatch<SetStateAction<boolean>>;
-    quizData: QuizData,
-    setQuizData: Dispatch<SetStateAction<QuizData>>;
+    quizData: AssessmentData,
+    setQuizData: Dispatch<SetStateAction<AssessmentData>>;
+    algorithmType: AlgorithmType,
+    setAlgorithmType: Dispatch<SetStateAction<AlgorithmType>>;
+    assessmentData: AssessmentData,
+    setAssessmentData: Dispatch<SetStateAction<AssessmentData>>;
 }
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
@@ -24,10 +29,17 @@ export const AppContextProvider: React.FC<{ children: ReactNode }> = ({ children
     const [quizData, setQuizData] = useState({
         quizQuestions: [],
         quizHints: []
-    } as QuizData);
+    } as AssessmentData);
+    const [algorithmType, setAlgorithmType] = useState({
+        type: null
+    } as AlgorithmType);
+    const [assessmentData, setAssessmentData] = useState({
+        quizQuestions: finalAssessmentQuestions,
+        quizHints: finalAssessmentHints
+    } as AssessmentData);
 
     return (
-        <AppContext.Provider value={{ showHome, setShowHome, showContent, setShowContent, showQuiz, setShowQuiz, showAssessment, setShowAssessment, quizData, setQuizData }}>
+        <AppContext.Provider value={{ showHome, setShowHome, showContent, setShowContent, showQuiz, setShowQuiz, showAssessment, setShowAssessment, quizData, setQuizData, algorithmType, setAlgorithmType, assessmentData, setAssessmentData }}>
             {children}
         </AppContext.Provider>
     );

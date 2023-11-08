@@ -10,7 +10,11 @@ export interface AssessmentQuestionDetails {
     onAnswerClick: (selectedAnswerNumber: number, correctAnswerNumber: number) => void;
 }
 
-export interface QuizData {
+export interface AssessmentData {
     quizQuestions: AssessmentQuestionDetails[],
     quizHints: string[]
+}
+
+export interface AlgorithmType {
+    type: 'linear' | 'binary' | 'hashing' | null;
 }

@@ -1,4 +1,4 @@
-import {AssessmentQuestionDetails, QuizData} from "@/app/interfaces/assessment-question-details";
+import {AssessmentQuestionDetails, AssessmentData} from "@/app/interfaces/assessment-question-details";
 
 // Linear Search Quiz Data
 export const linearQuizQuestions: AssessmentQuestionDetails[] = [
@@ -66,7 +66,7 @@ export const linearQuizHints = [
     'Q4 Hint - Linear',
     'Q5 Hint - Linear'];
 
-export const linearQuizData: QuizData = {
+export const linearQuizData: AssessmentData = {
     quizQuestions: linearQuizQuestions,
     quizHints: linearQuizHints
 }
@@ -139,7 +139,7 @@ export const binaryQuizHints = [
     'Q5 Hint - Binary'
 ];
 
-export const binaryQuizData: QuizData = {
+export const binaryQuizData: AssessmentData = {
     quizQuestions: binaryQuizQuestions,
     quizHints: binaryQuizHints
 }
@@ -211,7 +211,7 @@ export const hashingQuizHints = [
     'Q5 Hint - Hashing'
 ];
 
-export const hashingQuizData: QuizData = {
+export const hashingQuizData: AssessmentData = {
     quizQuestions: hashingQuizQuestions,
     quizHints: hashingQuizHints
 }
