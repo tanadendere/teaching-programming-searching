@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Searching Algorithms Hashing",
+        "description": "Hashing in search algorithms involves converting data into a fixed-size hash code, which serves as an index for efficient data retrieval. This process allows for quick data lookup, as the hash code maps directly to a specific location or bucket in a data structure, such as a hash table. It's commonly used to optimize search operations and is known for its fast and constant-time access to stored values.",
+        "url": "I0wMkQu1yQk"
+    },
+    {
+        "title": "Video 2",
+        "description": "Summary of Video 2 content.",
+        "url": "O24DIhigKBQ"        
+    },
+    {
+        "title": "Video 3",
+        "description": "Summary of Video 3 content.",
+        "url": "iUH_KTPdEYg"
+    }
+]

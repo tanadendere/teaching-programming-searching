@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, CardMedia } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
+import styles from '../../styles/homepage.module.css'
+
 export default function VideoCardComponent(videoDetails: VideoCardDetails) {
     const navigate = useNavigate();
 
@@ -16,19 +18,21 @@ export default function VideoCardComponent(videoDetails: VideoCardDetails) {
     
     let targetUrl = `http://i3.ytimg.com/vi/${videoDetails.url}/mqdefault.jpg`;
     return (
-            <Card variant="outlined" style={{ maxWidth: '50vh' }}>
-                <CardActionArea onClick={coursesPage}>
+            <Card variant="outlined" style={{ minWidth: '50vh', maxWidth: '50vh', minHeight: '60vh', justifyItems: 'start'}}>
+                <CardActionArea style={{height: '100%'}} onClick={coursesPage} >
                     <CardMedia 
                         component="img"
-                        height="140"
+                        height="50%"
                         image={targetUrl}
+                        width="50vh"
+                        
                     />
-                    <CardContent>
+                    <CardContent >
                         <Typography variant="h4" gutterBottom>
                             {videoDetails.title}
                         </Typography>
                         <Typography variant="body2" color="textSecondary">
-                            {videoDetails.summary}
+                            {videoDetails.description}
                         </Typography>
                     </CardContent>
                     

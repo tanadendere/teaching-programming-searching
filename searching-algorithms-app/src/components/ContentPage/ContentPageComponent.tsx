@@ -20,14 +20,7 @@ export default function ContentPageComponent() {
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim varius nibh, ut tristique leo facilisis quis. Ut at tellus sed nulla mattis tempor. Mauris quis lectus ligula. Pellentesque id lectus non enim suscipit gravida eu vel nisl. Donec dolor lacus, faucibus nec cursus quis, bibendum non nisl. Maecenas pretium egestas nisl, vitae tempor urna tempor nec. Donec leo neque, efficitur vitae arcu et, blandit tristique justo. Duis pellentesque id ex sit amet semper. Etiam dictum, massa fringilla finibus rhoncus, turpis justo fermentum purus, et egestas purus massa non quam. Praesent egestas pharetra rutrum. Sed tempus mauris vel placerat cursus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.`;
 
     const details_string = localStorage.getItem('videoDetails') || ''
-    const videoDetails: VideoCardDetails = JSON.parse(details_string)
-    
-    let videoDetailsProps = {
-        url: videoDetails.url, 
-        title: videoDetails.title, 
-        summary: videoDetails.summary
-    }
-
+    const videoDetails: VideoCardDetails = JSON.parse(details_string);
 
     const navigate = useNavigate();
 
@@ -53,8 +46,8 @@ export default function ContentPageComponent() {
                     buttonEvent={handleHomeButton}/>
                 <div style={{paddingTop: '10px', height: '80vh'}}>
                     <Video
-                        {...videoDetailsProps} />
-                    <TopicContentComponent title={topicTitle} summary={topicSummary}/>
+                        {...videoDetails} />
+                    <TopicContentComponent title={videoDetails.title} summary={videoDetails.description}/>
                 </div>
                 <ButtonComponent 
                     className={styles.quizButton}
