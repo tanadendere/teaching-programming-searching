@@ -42,11 +42,14 @@ const AppContainerComponent: React.FC = () => {
         setShowAssessment(true);
     };
 
+
+
     useEffect(() => {
         setShowHome(false);
         setShowContent(true);
         setShowQuiz(false);
         setShowAssessment(false);
+        setQuizData(hashingQuizData);
     }, []); // This useEffect runs once on component mount to set initial context values
 
     return (
@@ -58,6 +61,12 @@ const AppContainerComponent: React.FC = () => {
 
                     <Route path="/content"
                         element={<ContentPageComponent />} />
+
+                    <Route path="/quiz"
+                           element={<QuizComponent quizQuestions={quizData.quizQuestions} quizHints={quizData.quizHints}/>} />
+
+                    <Route path="/assessment"
+                           element={<AssessmentComponent quizQuestions={assessmentData.quizQuestions} quizHints={assessmentData.quizHints} />} />
                 </Routes>
 
             </BrowserRouter >

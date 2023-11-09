@@ -9,6 +9,7 @@ import {AssessmentQuestionDetails, AssessmentData} from "@/app/interfaces/assess
 import {DialogActions, DialogContentText} from "@mui/material";
 import {useAppContext} from "@/app/AppContext";
 import {linearQuizQuestions, linearQuizHints} from "@/app/resources/system-data/quiz-data";
+import {useNavigate} from "react-router-dom";
 
 export default function QuizComponent({quizQuestions, quizHints}: AssessmentData) {
     const [isHintModalOpen, setHintModalOpen] = useState(false);
@@ -19,6 +20,8 @@ export default function QuizComponent({quizQuestions, quizHints}: AssessmentData
         setShowHome, setShowQuiz, algorithmType,
         setLinearQuizCompleted, setBinaryQuizCompleted, setHashingQuizCompleted
     } = useAppContext();
+
+    const navigate = useNavigate();
 
     const handleHintModalOpen = () => {
         setHintModalOpen(true);
@@ -80,6 +83,9 @@ export default function QuizComponent({quizQuestions, quizHints}: AssessmentData
                     <DialogTitle>Hint for the Question</DialogTitle>
                     <DialogContent>
                         {quizHints[currentQuestion]}
+                    </DialogContent>
+                    <DialogContent>
+                        <strong><i>* Click anywhere outside the popup to close it</i></strong>
                     </DialogContent>
                 </Dialog>
             </div>

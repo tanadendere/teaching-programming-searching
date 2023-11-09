@@ -44,7 +44,7 @@ export default function ContentPageComponent() {
     }
 
     const handleQuizButton = () => {
-        navigate('');
+        navigate('/quiz');
     }
 
     return (

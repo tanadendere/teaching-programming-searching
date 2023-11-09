@@ -9,12 +9,16 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import {DialogActions, DialogContentText} from "@mui/material";
 import {useAppContext} from "@/app/AppContext";
+import styles from '../../styles/homepage.module.css';
+import ButtonComponent from "@/components/Button/ButtonComponent";
+import {useNavigate} from "react-router-dom";
 
 export default function AssessmentComponent({quizQuestions, quizHints}: AssessmentData) {
 
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
-    const { setShowHome, setShowAssessment } = useAppContext();
+
+    const navigate = useNavigate();
 
     const handleAnswerClick = (selectedAnswerNumber: number, correctAnswerNumber: number) => {
         if (selectedAnswerNumber === correctAnswerNumber) {
@@ -28,8 +32,13 @@ export default function AssessmentComponent({quizQuestions, quizHints}: Assessme
 
     const handleClose = () => {
         setShowScore(false);
-        setShowHome(true);
-        setShowAssessment(false);
+    };
+
+    const handleBackHome = () => {
+        navigate('/');
+    };
+
+    const handleReviewTest = () => {
     };
 
     return (
@@ -65,18 +74,26 @@ export default function AssessmentComponent({quizQuestions, quizHints}: Assessme
 
                         <DialogContent>
                             <DialogContentText>
-                                {score >=  8
+                                {score >=  7
                                     ? `Well done, you scored: ${score/10 * 100}%`
-                                    : `Nice try, you scored: ${score/10 * 100}%`}
+                                    : `You scored: ${score/10 * 100}%`}
                             </DialogContentText>
                             <DialogContentText>
                                 Final Score: {score}/10
                             </DialogContentText>
                         </DialogContent>
+                        <DialogContent>
+                            <strong><i>* Click anywhere outside the popup to close it and view test</i></strong>
+                        </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleClose} variant="contained" color="primary">
-                                Return to Home Page
+                            <Button onClick={handleBackHome} variant="contained" color="primary">
+                                Return Home
                             </Button>
+                            {/*<ButtonComponent*/}
+                            {/*    className={styles.quizButton}*/}
+                            {/*    text='Return Home'*/}
+                            {/*    alignment='center'*/}
+                            {/*    buttonEvent={handleBackHome}/>*/}
                         </DialogActions>
                     </Dialog>
                 </div>
