@@ -11,7 +11,7 @@ export default function HomePageComponent() {
 
     return (
         <div>
-            <div style={{padding: '10px',  textAlign: 'center', background: 'gray'}}>
+            <div style={{padding: '10px',  textAlign: 'center'}}>
                 <h1> Searching Algorithm System</h1>
             </div>
             
