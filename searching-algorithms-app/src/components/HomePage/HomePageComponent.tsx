@@ -11,6 +11,29 @@ export default function HomePageComponent() {
 
     const navigate = useNavigate();
 
+    const videos = [
+        {
+            id: 1,
+            videoUrl: 'Mno9uoYgghE',
+            heading: 'Video 1',
+            summary: 'Summary of Video 1 content.',
+            type: 'linear'
+        },
+        {
+            id: 2,
+            videoUrl: 'O24DIhigKBQ',
+            heading: 'Video 2',
+            summary: 'Summary of Video 2 content.',
+            type: 'binary'
+        },
+        {
+            id: 3,
+            videoUrl: 'iUH_KTPdEYg',
+            heading: 'Video 3',
+            summary: 'Summary of Video 3 content.',
+            type: 'hashing'
+        },
+    ];
     const handleAssessmentButton = () => {
         navigate('/assessment');
     }

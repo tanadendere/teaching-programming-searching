@@ -4,8 +4,9 @@ import ContentPageComponent from '@/components/ContentPage/ContentPageComponent'
 import QuizComponent from '@/components/Quiz/QuizComponent';
 import { useAppContext } from "@/app/AppContext";
 import AssessmentComponent from "@/components/Assessment/AssessmentComponent";
-import {hashingQuizData} from "@/app/resources/system-data/quiz-data";
+import {binaryQuizData, hashingQuizData, linearQuizData} from "@/app/resources/system-data/quiz-data";
 import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
+import {VideoCardDetails} from "@/app/interfaces/video-card-details";
 
 const AppContainerComponent: React.FC = () => {
     const { showHome, showContent, showQuiz, setShowHome,
@@ -49,7 +50,8 @@ const AppContainerComponent: React.FC = () => {
         setShowContent(true);
         setShowQuiz(false);
         setShowAssessment(false);
-        setQuizData(hashingQuizData);
+
+
     }, []); // This useEffect runs once on component mount to set initial context values
 
     return (
@@ -63,7 +65,7 @@ const AppContainerComponent: React.FC = () => {
                         element={<ContentPageComponent />} />
 
                     <Route path="/quiz"
-                           element={<QuizComponent quizQuestions={quizData.quizQuestions} quizHints={quizData.quizHints}/>} />
+                           element={<QuizComponent />} />
 
                     <Route path="/assessment"
                            element={<AssessmentComponent quizQuestions={assessmentData.quizQuestions} quizHints={assessmentData.quizHints} />} />

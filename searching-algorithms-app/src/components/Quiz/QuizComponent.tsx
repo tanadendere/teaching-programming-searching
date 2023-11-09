@@ -8,10 +8,16 @@ import AssessmentQuestionComponent from "@/components/AssementQuestion/Assessmen
 import {AssessmentQuestionDetails, AssessmentData} from "@/app/interfaces/assessment-question-details";
 import {DialogActions, DialogContentText} from "@mui/material";
 import {useAppContext} from "@/app/AppContext";
-import {linearQuizQuestions, linearQuizHints} from "@/app/resources/system-data/quiz-data";
+import {
+    linearQuizQuestions,
+    linearQuizHints,
+    linearQuizData,
+    binaryQuizData, hashingQuizData
+} from "@/app/resources/system-data/quiz-data";
 import {useNavigate} from "react-router-dom";
+import {VideoCardDetails} from "@/app/interfaces/video-card-details";
 
-export default function QuizComponent({quizQuestions, quizHints}: AssessmentData) {
+export default function QuizComponent() {
     const [isHintModalOpen, setHintModalOpen] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
@@ -20,6 +26,24 @@ export default function QuizComponent({quizQuestions, quizHints}: AssessmentData
         setShowHome, setShowQuiz, algorithmType,
         setLinearQuizCompleted, setBinaryQuizCompleted, setHashingQuizCompleted
     } = useAppContext();
+
+    const details_string = localStorage.getItem('videoDetails') || ''
+    const videoDetails: VideoCardDetails = JSON.parse(details_string)
+
+    let quizData: AssessmentData = {
+        quizQuestions: [],
+        quizHints: []
+    };
+
+    if(videoDetails.type === 'linear'){
+        quizData = linearQuizData
+    }
+    else if(videoDetails.type === 'binary'){
+        quizData = binaryQuizData
+    }
+    else if(videoDetails.type === 'hashing'){
+        quizData = hashingQuizData;
+    }
 
     const navigate = useNavigate();
 
@@ -32,13 +56,13 @@ export default function QuizComponent({quizQuestions, quizHints}: AssessmentData
     };
 
     const handleNextQuestion = () => {
-        if(currentQuestion < quizQuestions.length-1){
+        if(currentQuestion < quizData.quizQuestions.length-1){
             setCurrentQuestion(prevQuestion => prevQuestion + 1);
         }
     };
 
     const handlePreviousQuestion = () => {
-        if(currentQuestion < quizQuestions.length){
+        if(currentQuestion < quizData.quizQuestions.length){
             setCurrentQuestion(prevQuestion => prevQuestion - 1);
         }
     };
@@ -70,6 +94,10 @@ export default function QuizComponent({quizQuestions, quizHints}: AssessmentData
         setShowQuiz(false);
     };
 
+    const handleBackHome = () => {
+        navigate('/');
+    };
+
 
     return (
         <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
@@ -82,7 +110,7 @@ export default function QuizComponent({quizQuestions, quizHints}: AssessmentData
                 <Dialog open={isHintModalOpen} onClose={handleHintModalClose}>
                     <DialogTitle>Hint for the Question</DialogTitle>
                     <DialogContent>
-                        {quizHints[currentQuestion]}
+                        {quizData.quizHints[currentQuestion]}
                     </DialogContent>
                     <DialogContent>
                         <strong><i>* Click anywhere outside the popup to close it</i></strong>
@@ -91,31 +119,31 @@ export default function QuizComponent({quizQuestions, quizHints}: AssessmentData
             </div>
 
             <AssessmentQuestionComponent
-                key={quizQuestions[currentQuestion].questionNumber}
-                questionNumber={quizQuestions[currentQuestion].questionNumber}
-                questionText={quizQuestions[currentQuestion].questionText}
-                answerOne={quizQuestions[currentQuestion].answerOne}
-                answerTwo={quizQuestions[currentQuestion].answerTwo}
-                answerThree={quizQuestions[currentQuestion].answerThree}
-                answerFour={quizQuestions[currentQuestion].answerFour}
-                correctAnswerNumber={quizQuestions[currentQuestion].correctAnswerNumber}
-                isFinalAssessment={quizQuestions[currentQuestion].isFinalAssessment}
+                key={quizData.quizQuestions[currentQuestion].questionNumber}
+                questionNumber={quizData.quizQuestions[currentQuestion].questionNumber}
+                questionText={quizData.quizQuestions[currentQuestion].questionText}
+                answerOne={quizData.quizQuestions[currentQuestion].answerOne}
+                answerTwo={quizData.quizQuestions[currentQuestion].answerTwo}
+                answerThree={quizData.quizQuestions[currentQuestion].answerThree}
+                answerFour={quizData.quizQuestions[currentQuestion].answerFour}
+                correctAnswerNumber={quizData.quizQuestions[currentQuestion].correctAnswerNumber}
+                isFinalAssessment={quizData.quizQuestions[currentQuestion].isFinalAssessment}
                 onAnswerClick={handleAnswerClick}
             />
 
-            { currentQuestion > 0 && currentQuestion < quizQuestions.length &&  <div style={{ marginTop: '30px' }}>
+            { currentQuestion > 0 && currentQuestion < quizData.quizQuestions.length &&  <div style={{ marginTop: '30px' }}>
                 <Button variant="contained" color="primary" onClick={handlePreviousQuestion}>
                     Previous
                 </Button>
             </div>}
 
-            { currentQuestion < quizQuestions.length - 1 && <div style={{ marginTop: '15px' }}>
+            { currentQuestion < quizData.quizQuestions.length - 1 && <div style={{ marginTop: '15px' }}>
                 <Button variant="contained" color="primary" onClick={handleNextQuestion}>
                     Next
                 </Button>
             </div>}
 
-            { currentQuestion === quizQuestions.length - 1 && <div style={{ marginTop: '15px' }}>
+            { currentQuestion === quizData.quizQuestions.length - 1 && <div style={{ marginTop: '15px' }}>
                 <Button variant="contained" color="primary" onClick={handleComplete}>
                     Complete Quiz
                 </Button>
@@ -141,8 +169,8 @@ export default function QuizComponent({quizQuestions, quizHints}: AssessmentData
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleClose} variant="contained" color="primary">
-                                Return to Home Page
+                            <Button onClick={handleBackHome} variant="contained" color="primary">
+                                Return Home
                             </Button>
                         </DialogActions>
                     </Dialog>
