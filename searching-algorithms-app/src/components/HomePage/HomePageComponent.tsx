@@ -1,8 +1,7 @@
 import * as React from 'react';
 import VideoCardComponent from "@/components/VideoCard/VideoCardComponent";
-import { useNavigate } from "react-router-dom";
 
-import styles from '../../styles/homepage.module.css';
+import styles from "@/styles/homepage.module.css";
 import _lessons from '@/app/resources/lessons.json';
 import { VideoCardDetails } from '@/app/interfaces/video-card-details';
 
@@ -11,8 +10,8 @@ export default function HomePageComponent() {
 
     return (
         <div>
-            <div style={{padding: '10px',  textAlign: 'center'}}>
-                <h1> Searching Algorithm System</h1>
+            <div className={styles.header}>
+                <h1>Learn2Search</h1>
             </div>
             
             <div className={styles.pageItems}>

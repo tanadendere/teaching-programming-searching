@@ -12,3 +12,10 @@
     min-height: '60vh'; 
     justify-content: 'start'
 }
+
+.header {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 5px inset #00A9FF;
+    /* backgroundColor: '#00A9FF'; */
+}
