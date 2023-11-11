@@ -1,0 +1,8 @@
+.quizButton {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding: 5px;
+    align-content: center;
+    background-color: white;
+}

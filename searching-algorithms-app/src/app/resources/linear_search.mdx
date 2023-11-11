@@ -1,0 +1,51 @@
+## Search Algorithm: Linear
+
+In this lesson we are going discuss what is linear search, show you how to use linear search to find if a number or playing card exists in an array or not, and show you the algorithm to apply Linear Search using python code.
+
+Linear search is a simple searching algorithm that sequentially checks each element in a list until finding the target value or reaching the end.
+It's straightforward and easy to implement in various scenarios.
+In situations with small datasets or unsorted lists, linear search can be efficient and doesn't require any pre-sorting.
+
+Let's look at an example:
+Here is an array of number with their indexes displayed above. Lets use linear search to find the number 8
+<img src="./images/linear/7.png" alt="drawing" width="700" height="400"/>
+We're going to start at the beginning of the array.
+3 is not 8, so we move to the next index
+<img src="./images/linear/8.png" alt="drawing" width="700" height="400"/>
+2 is not 8, so we move to the next index
+<img src="./images/linear/9.png" alt="drawing" width="700" height="400"/>
+We found number 8 at the 2nd index!
+<img src="./images/linear/10.png" alt="drawing" width="700" height="400"/>
+
+Let's view another example. This time, with playing cards, instead of numbers
+Let's find the 5 of clubs.
+We start at the first index.
+7 of spades is not the 5 of clubs, so we move to the next index
+<img src="./images/linear/14.png" alt="drawing" width="700" height="400"/>
+4 of hearts is not the 5 of clubs, so we move to the next index
+<img src="./images/linear/15.png" alt="drawing" width="700" height="400"/>
+9 of diamonds is not the 5 of clubs, so we move to the next index
+<img src="./images/linear/16.png" alt="drawing" width="700" height="400"/>
+We found the 5 of clubs!
+<img src="./images/linear/17.png" alt="drawing" width="700" height="400"/>
+Let's look at one more example. This time, we will search for the 3 of diamonds.
+7 of spades is not the 3 of diamonds, so we move to the next index
+<img src="./images/linear/20.png" alt="drawing" width="700" height="400"/>
+
+4 of hearts is not the 3 of diamonds, so we move to the next index
+<img src="./images/linear/21.png" alt="drawing" width="700" height="400"/>
+9 of diamonds is not the 3 of diamonds, so we move to the next index
+<img src="./images/linear/22.png" alt="drawing" width="700" height="400"/>
+5 of clubs is not the 3 of diamonds, so we move to the next index
+<img src="./images/linear/23.png" alt="drawing" width="700" height="400"/>
+Ace of spades is not the 3 of diamonds. We have reached the end of our array, but have not found the 3 of diamonds, so we would return false.
+<img src="./images/linear/24.png" alt="drawing" width="700" height="400"/>
+
+Let's look at a simple python code example
+
+This linear search function is going to take in our array or the list and we're trying to find the number or the target inside the list 
+<img src="./images/linear/30.png" alt="drawing" width="700" height="400"/>
+**n** is the size of the array 
+We traverse through the array starting from the beginning to the end of the list. If the number that we're at is our Target then we return the index at that location and after the for Loop we know that it's not inside the array so we return -1.
+You can also return true and false instead.
+<img src="./images/linear/31.png" alt="drawing" width="700" height="400"/>

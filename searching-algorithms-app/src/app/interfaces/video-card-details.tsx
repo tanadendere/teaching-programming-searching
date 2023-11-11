@@ -1,5 +1,6 @@
 export interface VideoCardDetails {
     url: string,
     title: string,
-    summary: string
+    description: string,
+    text?: string
 }

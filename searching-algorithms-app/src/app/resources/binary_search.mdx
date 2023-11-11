@@ -1,0 +1,76 @@
+## Search Algorithm: Binary
+
+In this lesson we to discuss what is binary search, show you how to use binary search to find if a playing card exists in an array or not, and show you the algorithm to apply Binary Search using python code.
+
+An efficient algorithm that continually divides a sorted array in half to quickly locate a target value. It starts by comparing the target with the middle element of the array and eliminates half of the remaining elements based on the comparison, continuing this process until the target is found or the search space is exhausted.
+
+Binary search is highly efficient for large sorted datasets. It significantly reduces the search space by half at each step, resulting in a faster search process, particularly when dealing with substantial amounts of data.
+
+Binary search is a favourable choice when working with sorted arrays or lists.
+
+Let's look at an example.
+We will be using an array of playing cards
+A precondition for binary search is that the array must be sorted from smallest to largest
+<img src="./images/binary/8.png" alt="drawing" width="700" height="400"/>
+Let's find the 7 of spades in the array
+We start by putting "l" or left at the beginning of the array and we put "r" or right at the end of the array.
+<img src="./images/binary/11.png" alt="drawing" width="700" height="400"/>
+
+The second step is to calculate the mid.
+The formula for mid is left plus right divided by 2. 
+<img src="./images/binary/12.png" alt="drawing" width="700" height="400"/>
+l is zero at index zero. r is 4. 4 divided by 2 is 2. So, the mid is at index 2.
+<img src="./images/binary/14.png" alt="drawing" width="700" height="400"/>
+
+<img src="./images/binary/15.png" alt="drawing" width="700" height="400"/>
+Next, we split the array into 2 groups.
+<img src="./images/binary/17.png" alt="drawing" width="700" height="400"/>
+
+First, we check the card at m. We see that the 7 of spades is larger than the 5 of clubs, so it has to be in the second group.
+We simply move the left over to the second group meaning that we choose the second group and then we repeat the process.
+<img src="./images/binary/18.png" alt="drawing" width="700" height="400"/>
+<img src="./images/binary/19.png" alt="drawing" width="700" height="400"/>
+
+We calculate mid: l is 3 r is 4. 7 divided by 2 is 3.5. 
+<img src="./images/binary/22.png" alt="drawing" width="700" height="400"/>
+The floor sign means that you round down. So the mid becomes 3.
+<img src="./images/binary/24.png" alt="drawing" width="700" height="400"/>
+
+We then split the array into 2 groups again. 
+<img src="./images/binary/25.png" alt="drawing" width="700" height="400"/>
+
+We check the card at mid again and see that the 7 of spades is here
+So we have successfully found the card using binary search.
+You can return true or the index where the card was found.
+<img src="./images/binary/26.png" alt="drawing" width="700" height="400"/>
+
+Let's do one more example and find the Ace of spades.
+We already have mid and we split the array into 2 groups.
+<img src="./images/binary/28.png" alt="drawing" width="700" height="400"/>
+Ace of spades is smaller than the 5 of clubs, so it would be in the first group.
+We simply move r over to index 1 meaning we choose the first group, and we repeat the process.
+<img src="./images/binary/29.png" alt="drawing" width="700" height="400"/>
+
+l is zero, r is 1. 1 divided by 2 is 0.5 and you round down, so the mid is zero.
+<img src="./images/binary/33.png" alt="drawing" width="700" height="400"/>
+<img src="./images/binary/34.png" alt="drawing" width="700" height="400"/>
+<img src="./images/binary/35.png" alt="drawing" width="700" height="400"/>
+We split the array into 2 groups again.
+<img src="./images/binary/36.png" alt="drawing" width="700" height="400"/>
+The first thing we do, is check the card at mid.
+Ace of spades is smaller than the 2 of clubs
+So we move r to this side.
+<img src="./images/binary/37.png" alt="drawing" width="700" height="400"/>
+Notice that when r is to the left of l, this indicates that the Ace of spades does not exist in the array.
+In this case you can either return false or minus 1
+<img src="./images/binary/38.png" alt="drawing" width="700" height="400"/>
+
+Let's take a look at the python code
+<img src="./images/binary/40.png" alt="drawing" width="700" height="400"/>
+So we put l at index zero and r at the end of the array.
+<img src="./images/binary/42.png" alt="drawing" width="700" height="400"/>
+As long as l is smaller than or equal to r, or in other words, when l is to the left of r - we calculate the mid index.
+
+Then we look into the array at Mid. If we find a Target then we simply return the mid index.
+
+If our number in the array at Mid is smaller than the target it means our Target is in the second group. So we have to move L to Mid plus 1.

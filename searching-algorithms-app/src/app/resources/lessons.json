@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Linear Search",
+        "description": "Discussion of what is linear search, demonstration of how to use linear search to find if a number or playing card exists in an array or not and the algorithm to apply Linear Search using python code.",
+        "url": "Z4resz1u-Tc",
+        "text": "linear_search.mdx"       
+    },
+    {
+        "title": "Binary Search",
+        "description": "Discussion of what is binary search, demonstration of how to use binary search to find if playing card exists in an array or not the algorithm to apply Binary Search using python code.",
+        "url": "u-vCQzIr00A",
+        "text": "binary_search.mdx"
+    },
+    {
+        "title": "Hashing Search",
+        "description": "Hashing in search algorithms involves converting data into a fixed-size hash code, which serves as an index for efficient data retrieval. This process allows for quick data lookup, as the hash code maps directly to a specific location or bucket in a data structure, such as a hash table. It's commonly used to optimize search operations and is known for its fast and constant-time access to stored values.",
+        "url": "I0wMkQu1yQk",
+        "text": "hash_search.mdx"
+    }
+]

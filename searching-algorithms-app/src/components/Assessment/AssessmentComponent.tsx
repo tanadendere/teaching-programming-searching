@@ -2,77 +2,23 @@
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import AssessmentQuestionComponent from "@/components/AssementQuestion/AssessmentQuestionComponent";
-import {AssessmentQuestionDetails} from "@/app/interfaces/assessment-question-details";
+import {AssessmentData, AssessmentQuestionDetails} from "@/app/interfaces/assessment-question-details";
 import VideoCardComponent from "@/components/VideoCard/VideoCardComponent";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import {DialogActions, DialogContentText} from "@mui/material";
 import {useAppContext} from "@/app/AppContext";
+import styles from '../../styles/homepage.module.css';
+import ButtonComponent from "@/components/Button/ButtonComponent";
+import {useNavigate} from "react-router-dom";
 
-export default function AssessmentComponent() {
+export default function AssessmentComponent({quizQuestions, quizHints}: AssessmentData) {
 
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
-    const { setShowHome, setShowAssessment } = useAppContext();
 
-    const assessmentQuestions: AssessmentQuestionDetails[] = [
-        {
-            questionNumber: 1,
-            questionText: 'The first question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4,
-            isFinalAssessment: true,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 2,
-            questionText: 'The second question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer(and correct)',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer ',
-            correctAnswerNumber: 2,
-            isFinalAssessment: true,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 3,
-            questionText: 'The third question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4,
-            isFinalAssessment: true,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 4,
-            questionText: 'The fourth question?',
-            answerOne: 'First Answer(and correct)',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer ',
-            correctAnswerNumber: 1,
-            isFinalAssessment: true,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 5,
-            questionText: 'The fifth question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4,
-            isFinalAssessment: true,
-            onAnswerClick: () => {}
-        }
-    ]
+    const navigate = useNavigate();
 
     const handleAnswerClick = (selectedAnswerNumber: number, correctAnswerNumber: number) => {
         if (selectedAnswerNumber === correctAnswerNumber) {
@@ -86,8 +32,13 @@ export default function AssessmentComponent() {
 
     const handleClose = () => {
         setShowScore(false);
-        setShowHome(true);
-        setShowAssessment(false);
+    };
+
+    const handleBackHome = () => {
+        navigate('/');
+    };
+
+    const handleReviewTest = () => {
     };
 
     return (
@@ -95,7 +46,7 @@ export default function AssessmentComponent() {
             <h1 style={{ fontSize: '40px' }}> Searching Final Assessment </h1>
 
             <div>
-                {assessmentQuestions.map((question) => (
+                {quizQuestions.map((question) => (
                     <AssessmentQuestionComponent
                         key={question.questionNumber} questionNumber={question.questionNumber}
                         questionText={question.questionText} answerOne={question.answerOne} answerTwo={question.answerTwo}
@@ -123,18 +74,26 @@ export default function AssessmentComponent() {
 
                         <DialogContent>
                             <DialogContentText>
-                                {score >=  4
-                                    ? `Well done, you scored: ${score/5 * 100}%`
-                                    : `Nice try, you scored: ${score/5 * 100}%`}
+                                {score >=  7
+                                    ? `Well done, you scored: ${score/10 * 100}%`
+                                    : `You scored: ${score/10 * 100}%`}
                             </DialogContentText>
                             <DialogContentText>
-                                Final Score: {score}/5
+                                Final Score: {score}/10
                             </DialogContentText>
                         </DialogContent>
+                        <DialogContent>
+                            <strong><i>* Click anywhere outside the popup to close it and view test</i></strong>
+                        </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleClose} variant="contained" color="primary">
-                                Return to Home Page
+                            <Button onClick={handleBackHome} variant="contained" color="primary">
+                                Return Home
                             </Button>
+                            {/*<ButtonComponent*/}
+                            {/*    className={styles.quizButton}*/}
+                            {/*    text='Return Home'*/}
+                            {/*    alignment='center'*/}
+                            {/*    buttonEvent={handleBackHome}/>*/}
                         </DialogActions>
                     </Dialog>
                 </div>

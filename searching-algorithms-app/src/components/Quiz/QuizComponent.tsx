@@ -5,16 +5,52 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import AssessmentQuestionComponent from "@/components/AssementQuestion/AssessmentQuestionComponent";
-import { AssessmentQuestionDetails } from "@/app/interfaces/assessment-question-details";
+import {AssessmentQuestionDetails, AssessmentData} from "@/app/interfaces/assessment-question-details";
 import {DialogActions, DialogContentText} from "@mui/material";
 import {useAppContext} from "@/app/AppContext";
+import {
+    linearQuizQuestions,
+    linearQuizHints,
+    linearQuizData,
+    binaryQuizData, hashingQuizData
+} from "@/app/resources/system-data/quiz-data";
+import {useNavigate} from "react-router-dom";
+import {VideoCardDetails} from "@/app/interfaces/video-card-details";
 
 export default function QuizComponent() {
     const [isHintModalOpen, setHintModalOpen] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
-    const { setShowHome, setShowQuiz } = useAppContext();
+    const {
+        setShowHome, setShowQuiz, algorithmType,
+        setLinearQuizCompleted, setBinaryQuizCompleted, setHashingQuizCompleted
+    } = useAppContext();
+
+    const details_string = localStorage.getItem('videoDetails') || ''
+    const videoDetails: VideoCardDetails = JSON.parse(details_string)
+
+    let quizData: AssessmentData = {
+        quizQuestions: [],
+        quizHints: []
+    };
+
+    let QuizType = '';
+
+    if(videoDetails.title === 'Linear Search'){
+        quizData = linearQuizData;
+        QuizType = 'Linear';
+    }
+    else if(videoDetails.title === 'Binary Search'){
+        quizData = binaryQuizData
+        QuizType = 'Binary';
+    }
+    else if(videoDetails.title === 'Hashing Search'){
+        quizData = hashingQuizData;
+        QuizType = 'Hashing'
+    }
+
+    const navigate = useNavigate();
 
     const handleHintModalOpen = () => {
         setHintModalOpen(true);
@@ -24,74 +60,14 @@ export default function QuizComponent() {
         setHintModalOpen(false);
     };
 
-    const quizQuestions: AssessmentQuestionDetails[] = [
-        {
-            questionNumber: 1,
-            questionText: 'The first question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4,
-            isFinalAssessment: false,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 2,
-            questionText: 'The second question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer(and correct)',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer ',
-            correctAnswerNumber: 2,
-            isFinalAssessment: false,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 3,
-            questionText: 'The third question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4,
-            isFinalAssessment: false,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 4,
-            questionText: 'The fourth question?',
-            answerOne: 'First Answer(and correct)',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer ',
-            correctAnswerNumber: 1,
-            isFinalAssessment: false,
-            onAnswerClick: () => {}
-        },
-        {
-            questionNumber: 5,
-            questionText: 'The fifth question?',
-            answerOne: 'First Answer',
-            answerTwo: 'Second Answer',
-            answerThree: 'Third Answer',
-            answerFour: 'Fourth Answer (and correct)',
-            correctAnswerNumber: 4,
-            isFinalAssessment: false,
-            onAnswerClick: () => {}
-        }
-    ]
-
-    const quizHints = ['Q1 Hint', 'Q2 Hint', 'Q3 Hint', 'Q4 Hint', 'Q5 Hint'];
-
     const handleNextQuestion = () => {
-        if(currentQuestion < quizQuestions.length-1){
+        if(currentQuestion < quizData.quizQuestions.length-1){
             setCurrentQuestion(prevQuestion => prevQuestion + 1);
         }
     };
 
     const handlePreviousQuestion = () => {
-        if(currentQuestion < quizQuestions.length){
+        if(currentQuestion < quizData.quizQuestions.length){
             setCurrentQuestion(prevQuestion => prevQuestion - 1);
         }
     };
@@ -104,6 +80,21 @@ export default function QuizComponent() {
 
     const handleComplete = () => {
         setShowScore(true);
+
+
+        if(videoDetails.title === 'Linear Search'){
+            setLinearQuizCompleted(true)
+            localStorage.setItem('linearQuizCompleted', 'true');
+        }
+        else if(videoDetails.title === 'Binary Search'){
+            setBinaryQuizCompleted(true)
+            localStorage.setItem('binaryQuizCompleted', 'true');
+        }
+        else if(videoDetails.title === 'Hashing Search'){
+            setHashingQuizCompleted(true)
+            localStorage.setItem('hashingQuizCompleted', 'true');
+        }
+
     };
 
     const handleClose = () => {
@@ -112,10 +103,14 @@ export default function QuizComponent() {
         setShowQuiz(false);
     };
 
+    const handleBackHome = () => {
+        navigate('/');
+    };
+
 
     return (
         <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
-            <h1 style={{ fontSize: '40px' }}>Linear Search Quiz</h1>
+            <h1 style={{ fontSize: '40px' }}>{QuizType} Search Quiz</h1>
 
             <div style={{ textAlign: 'center', margin: '20px 0' }}>
                 <Button variant="outlined" onClick={handleHintModalOpen}>
@@ -124,37 +119,34 @@ export default function QuizComponent() {
                 <Dialog open={isHintModalOpen} onClose={handleHintModalClose}>
                     <DialogTitle>Hint for the Question</DialogTitle>
                     <DialogContent>
-                        {quizHints[currentQuestion]}
+                        {quizData.quizHints[currentQuestion]}
+                    </DialogContent>
+                    <DialogContent>
+                        <strong><i>* Click anywhere outside the popup to close it</i></strong>
                     </DialogContent>
                 </Dialog>
             </div>
 
             <AssessmentQuestionComponent
-                key={quizQuestions[currentQuestion].questionNumber}
-                questionNumber={quizQuestions[currentQuestion].questionNumber}
-                questionText={quizQuestions[currentQuestion].questionText}
-                answerOne={quizQuestions[currentQuestion].answerOne}
-                answerTwo={quizQuestions[currentQuestion].answerTwo}
-                answerThree={quizQuestions[currentQuestion].answerThree}
-                answerFour={quizQuestions[currentQuestion].answerFour}
-                correctAnswerNumber={quizQuestions[currentQuestion].correctAnswerNumber}
-                isFinalAssessment={quizQuestions[currentQuestion].isFinalAssessment}
+                key={quizData.quizQuestions[currentQuestion].questionNumber}
+                questionNumber={quizData.quizQuestions[currentQuestion].questionNumber}
+                questionText={quizData.quizQuestions[currentQuestion].questionText}
+                answerOne={quizData.quizQuestions[currentQuestion].answerOne}
+                answerTwo={quizData.quizQuestions[currentQuestion].answerTwo}
+                answerThree={quizData.quizQuestions[currentQuestion].answerThree}
+                answerFour={quizData.quizQuestions[currentQuestion].answerFour}
+                correctAnswerNumber={quizData.quizQuestions[currentQuestion].correctAnswerNumber}
+                isFinalAssessment={quizData.quizQuestions[currentQuestion].isFinalAssessment}
                 onAnswerClick={handleAnswerClick}
             />
 
-            { currentQuestion > 0 && currentQuestion < quizQuestions.length &&  <div style={{ marginTop: '30px' }}>
-                <Button variant="contained" color="primary" onClick={handlePreviousQuestion}>
-                    Previous
-                </Button>
-            </div>}
-
-            { currentQuestion < quizQuestions.length - 1 && <div style={{ marginTop: '15px' }}>
+            { currentQuestion < quizData.quizQuestions.length - 1 && <div style={{ marginTop: '15px' }}>
                 <Button variant="contained" color="primary" onClick={handleNextQuestion}>
                     Next
                 </Button>
             </div>}
 
-            { currentQuestion === quizQuestions.length - 1 && <div style={{ marginTop: '15px' }}>
+            { currentQuestion === quizData.quizQuestions.length - 1 && <div style={{ marginTop: '15px' }}>
                 <Button variant="contained" color="primary" onClick={handleComplete}>
                     Complete Quiz
                 </Button>
@@ -180,8 +172,8 @@ export default function QuizComponent() {
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button onClick={handleClose} variant="contained" color="primary">
-                                Return to Home Page
+                            <Button onClick={handleBackHome} variant="contained" color="primary">
+                                Return Home
                             </Button>
                         </DialogActions>
                     </Dialog>
