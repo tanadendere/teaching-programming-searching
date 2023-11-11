@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect } from 'react';
 import HomePageComponent from '@/components/HomePage/HomePageComponent';
 import ContentPageComponent from '@/components/ContentPage/ContentPageComponent';

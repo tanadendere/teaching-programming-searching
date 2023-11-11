@@ -4,67 +4,67 @@ import {AssessmentQuestionDetails, AssessmentData} from "@/app/interfaces/assess
 export const linearQuizQuestions: AssessmentQuestionDetails[] = [
     {
         questionNumber: 1,
-        questionText: 'Given the array [3, 7, 1, 9, 4], what is the order in which elements are traversed to find the value 9 using Linear Search?',
-        answerOne: '[3, 7, 1, 9]',
-        answerTwo: '[3, 4, 7, 9]',
-        answerThree: '[3, 7, 1, 9, 4]',
-        answerFour: 'None of the above',
+        questionText: 'Given the array [14, 27, 8, 5, 10, 3], what is the order in which elements are traversed to find the value 10 using Linear Search?',
+        answerOne: '[14, 27, 8, 5, 10]',
+        answerTwo: '[14, 27, 8, 5, 3]',
+        answerThree: '[14, 27, 8, 5]',
+        answerFour: '14, 27, 8',
         correctAnswerNumber: 1,
         isFinalAssessment: false,
         onAnswerClick: () => {}
     },
     {
         questionNumber: 2,
-        questionText: 'For the array [8, 2, 5, 1, 6], what is the sequence of elements visited when searching for 5 using Linear Search?',
-        answerOne: '[8, 6, 2, 5]',
-        answerTwo: '[8, 2, 5, 1, 6]',
-        answerThree: '[8, 2, 5]',
-        answerFour: 'None of the above',
-        correctAnswerNumber: 3,
-        isFinalAssessment: false,
-        onAnswerClick: () => {}
-    },
-    {
-        questionNumber: 3,
-        questionText: 'In the array [4, 6, 2, 1, 7], what is the order of elements traversed to locate the value 1 using Linear Search?',
-        answerOne: '[4, 6, 2, 1]',
-        answerTwo: '[4, 6, 2, 1, 7]',
-        answerThree: '[4, 6, 7, 1]',
-        answerFour: 'None of the above',
+        questionText: 'In a deck of playing cards, the cards are arranged in the following order: [Spades, Diamonds, Clubs, Hearts]. If you are searching for the "Queen of Hearts" using linear search, what is the order of suits traversed to find it?',
+        answerOne: 'Spades, Diamonds, Clubs, Hearts',
+        answerTwo: 'Spades, Diamonds, Hearts, Clubs',
+        answerThree: 'Clubs, Diamonds, Spades, Hearts',
+        answerFour: 'Hearts, Clubs, Diamonds, Spades',
         correctAnswerNumber: 1,
         isFinalAssessment: false,
         onAnswerClick: () => {}
     },
     {
-        questionNumber: 4,
-        questionText: 'For the array [10, 3, 8, 5, 1], what is the sequence of elements visited when searching for 8 using Linear Search?',
-        answerOne: '[10, 3, 8, 5, 1]',
-        answerTwo: '[10, 3, 8]',
-        answerThree: '[10, 3, 8, 5]',
-        answerFour: 'None of the above',
+        questionNumber: 3,
+        questionText: 'Suppose you have an array of names: [\'Alice\', \'Bob\', \'Charlie\', \'David\', \'Eva\']. Using linear search, what is the order of names traversed to find the target name \'David\'?',
+        answerOne: '[Alice, Charlie, Bob, David]',
+        answerTwo: '[Alice, Bob, Charlie, David]',
+        answerThree: '[Bob, Alice, Eva, David]',
+        answerFour: ' David, Charlie, Bob, Alice',
         correctAnswerNumber: 2,
         isFinalAssessment: false,
         onAnswerClick: () => {}
     },
     {
+        questionNumber: 4,
+        questionText: 'You are given the array [32, 15, 7, 20, 45, 10]. Using linear search, what is the order of numbers traversed to find the target number 7?',
+        answerOne: '15, 32, 7',
+        answerTwo: '[7, 20, 45, 10]',
+        answerThree: '[10, 45, 20, 7]',
+        answerFour: '[ 32, 15, 7]',
+        correctAnswerNumber: 4,
+        isFinalAssessment: false,
+        onAnswerClick: () => {}
+    },
+    {
         questionNumber: 5,
-        questionText: 'Given the array [6, 2, 9, 4, 1], what is the order of elements visited when looking for 7 using Linear Search?',
-        answerOne: '[6, 1, 2, 4, 9]',
-        answerTwo: '[6, 2, 9, 4, 1]',
-        answerThree: '[6, 2, 9, 4]',
-        answerFour: 'None of the above',
-        correctAnswerNumber: 2,
+        questionText: 'Consider the array [4.5, 6.7, 2.3, 8.1, 5.4]. Using linear search, what is the order of elements traversed to find the target element 8.1?',
+        answerOne: '[4.5, 6.7, 2.3, 8.1]',
+        answerTwo: '[2.3, 4.5, 5.4, 6.7, 8.1]',
+        answerThree: '[5.4, 2.3, 6.7, 4.5, 8.1]',
+        answerFour: '[6.7, 4.5, 2.3, 8.1]',
+        correctAnswerNumber: 1,
         isFinalAssessment: false,
         onAnswerClick: () => {}
     }
 ];
 
 export const linearQuizHints = [
-    'Hint: Trace the order in which elements are checked during the Linear Search process.',
-    'Hint: Consider the sequence of elements visited for successful searches.',
-    'Hint: Think about the scenario where the target value is not in the array.',
-    'Hint: Pay attention to the movement through the array when searching for a specific value.',
-    'Hint: Focus on the steps involved in finding the target element using Linear Search.'
+    'Move through each element one by one until you find the target element.',
+    'Follow the sequence to find the "Queen of Hearts."',
+    'Sequentially go through the array of names.',
+    'Traverse the array until you locate the target number.',
+    'Follow the same process, moving through each element, to find the target element 8.1.'
 ];
 
 
@@ -78,55 +78,55 @@ export const linearQuizData: AssessmentData = {
 export const binaryQuizQuestions: AssessmentQuestionDetails[] = [
     {
         questionNumber: 1,
-        questionText: 'Given the sorted array [2, 5, 8, 12, 16, 23], what is the order of indices visited when searching for the value 16 using Binary Search?',
-        answerOne: '0, 2, 4, 5',
-        answerTwo: '0, 1, 2, 4, 5',
-        answerThree: '0, 2, 4',
-        answerFour: '0, 1, 3, 4, 5',
-        correctAnswerNumber: 3,
-        isFinalAssessment: false,
-        onAnswerClick: () => {}
-    },
-    {
-        questionNumber: 2,
-        questionText: 'For the sorted array [10, 20, 30, 40, 50], what is the sequence of indices visited when searching for 40 using Binary Search?',
-        answerOne: '0, 1, 2, 3',
-        answerTwo: '0, 2, 3',
-        answerThree: '1, 2, 3, 4',
-        answerFour: '1, 2, 3, 4, 5',
+        questionText: 'Consider the following sorted array of playing cards: [2 of Hearts, 5 of Clubs, 7 of Spades, 10 of Diamonds, King of Hearts]. Using binary search, what is the order of cards traversed to find the 7 of Spades?',
+        answerOne: '10 of Diamonds, 2 of Hearts, 7 of Spades',
+        answerTwo: '5 of Clubs, 7 of Spades',
+        answerThree: '10 of Diamonds, King of Hearts, 7 of Spades',
+        answerFour: '5 of Clubs, 2 of Hearts, 7 of Spades',
         correctAnswerNumber: 2,
         isFinalAssessment: false,
         onAnswerClick: () => {}
     },
     {
-        questionNumber: 3,
-        questionText: 'In the sorted array [5, 10, 15, 20, 25, 30], what is the order of indices visited when searching for the value 10 using Binary Search?',
-        answerOne: '2, 3, 4',
-        answerTwo: '0, 1',
-        answerThree: '0, 1, 2',
-        answerFour: '1, 2, 3, 4, 5',
-        correctAnswerNumber: 3,
-        isFinalAssessment: false,
-        onAnswerClick: () => {}
-    },
-    {
-        questionNumber: 4,
-        questionText: 'For the sorted array [1, 3, 5, 7, 9], what is the sequence of indices visited when searching for 7 using Binary Search?',
-        answerOne: '0, 2, 3',
-        answerTwo: '2, 3, 4',
-        answerThree: '0, 1, 2, 3',
-        answerFour: '1, 3, 4',
+        questionNumber: 2,
+        questionText: 'In a deck of playing cards sorted from Ace to King, what is the order of steps taken to find the Jack of Spades using binary search?',
+        answerOne: ' Start: Ace of Spades, Split: Jack of Spades found',
+        answerTwo: 'Start: King of Hearts, Split: Jack of Spades found',
+        answerThree: 'Start: Ace of Spades, Split: Split again, Jack of Spades found',
+        answerFour: 'Start: King of Hearts, Split: Split again, Jack of Spades found',
         correctAnswerNumber: 1,
         isFinalAssessment: false,
         onAnswerClick: () => {}
     },
     {
+        questionNumber: 3,
+        questionText: 'Suppose you have a sorted array of numbers: [3, 8, 12, 15, 20]. Using binary search, what is the order of elements traversed to find the number 15?',
+        answerOne: '12, 15',
+        answerTwo: '12, 20, 8, 15',
+        answerThree: '20, 12, 15',
+        answerFour: '3, 8, 12, 15',
+        correctAnswerNumber: 2,
+        isFinalAssessment: false,
+        onAnswerClick: () => {}
+    },
+    {
+        questionNumber: 4,
+        questionText: 'You are given the sorted array [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]. Using binary search, what is the order of elements traversed to find the number 7?',
+        answerOne: '5, 7, 8',
+        answerTwo: '7, 5, 8',
+        answerThree: '5, 6, 7',
+        answerFour: '8, 7',
+        correctAnswerNumber: 3,
+        isFinalAssessment: false,
+        onAnswerClick: () => {}
+    },
+    {
         questionNumber: 5,
-        questionText: 'Given the sorted array [4, 8, 12, 16, 20], what is the order of indices visited when looking for the value 6 using Binary Search?',
-        answerOne: '1, 2',
-        answerTwo: '0, 1',
-        answerThree: '2, 3',
-        answerFour: 'None of the above',
+        questionText: 'Consider the array [10, 20, 30, 40, 50]. Using binary search, what is the order of numbers traversed to find the target number 40?',
+        answerOne: '30, 50, 20, 40',
+        answerTwo: '30, 40',
+        answerThree: '50, 30, 40',
+        answerFour: '10, 20, 30, 40',
         correctAnswerNumber: 4,
         isFinalAssessment: false,
         onAnswerClick: () => {}
@@ -134,11 +134,11 @@ export const binaryQuizQuestions: AssessmentQuestionDetails[] = [
 ];
 
 export const binaryQuizHints = [
-    'Hint: Consider how Binary Search divides the search space in each iteration.',
-    'Hint: Reflect on the impact of the sorted order on the Binary Search algorithm.',
-    'Hint: Think about the scenarios where the target value is found in the middle or at the edges of the array.',
-    'Hint: Pay attention to the movement through the array when searching for a specific value.',
-    'Hint: Focus on the steps involved in finding the target element using Binary Search.'
+    'Begin in the middle of the array and eliminate half based on comparisons.',
+    'Depending on the comparison, eliminate one half of the remaining cards.',
+    'Eliminate half of the remaining elements based on comparisons.',
+    'Pay attention to the order of comparisons',
+    'Identify the middle element in each step and compare it to the target.'
 ];
 
 
@@ -151,55 +151,55 @@ export const binaryQuizData: AssessmentData = {
 export const hashingQuizQuestions: AssessmentQuestionDetails[] = [
     {
         questionNumber: 1,
-        questionText: 'For a hash table of size 7, what is the order of indices visited when inserting the values 18, 7, 12, and 25 using linear probing?',
-        answerOne: '1, 2, 3, 4',
-        answerTwo: '4, 5, 6, 0',
-        answerThree: '2, 3, 4, 5',
-        answerFour: '1, 3, 5, 6',
-        correctAnswerNumber: 2,
+        questionText: 'What is the hashing index returned when the word "dog" goes through the hashing function that maps the letters of the alphabet to numbers 1 to 26?',
+        answerOne: 'Index 4',
+        answerTwo: 'Index 7',
+        answerThree: 'Index 15',
+        answerFour: 'Index 11',
+        correctAnswerNumber: 1,
         isFinalAssessment: false,
         onAnswerClick: () => {}
     },
     {
         questionNumber: 2,
-        questionText: 'Given a hash table of size 5 with separate chaining, what is the order of indices visited when inserting values 15, 5, 20, and 10 using a hash function?',
-        answerOne: '0, 1, 2, 3',
-        answerTwo: '2, 4, 0, 1',
-        answerThree: '1, 2, 3, 4',
-        answerFour: '0, 1, 2, 4',
-        correctAnswerNumber: 2,
+        questionText: 'In a hash table with 26 slots, if the hashing function returns index 8 for the word "lemon," where will "lemon" be inserted?',
+        answerOne: 'Index 8',
+        answerTwo: 'Index 15',
+        answerThree: 'Index 5',
+        answerFour: 'Index 18',
+        correctAnswerNumber: 1,
         isFinalAssessment: false,
         onAnswerClick: () => {}
     },
     {
         questionNumber: 3,
-        questionText: 'In a hash table of size 11 with quadratic probing, what is the order of indices visited when inserting values 25, 9, 16, and 36?',
-        answerOne: '3, 4, 1, 0',
-        answerTwo: '5, 6, 7, 8',
-        answerThree: '2, 3, 4, 5',
-        answerFour: '1, 3, 5, 7',
-        correctAnswerNumber: 2,
+        questionText: 'After the word "bird" goes through the hashing function, it returns index 19. In a hash table with 26 slots, where will "bird" be inserted?',
+        answerOne: 'Index 19',
+        answerTwo: 'Index 5',
+        answerThree: 'Index 14',
+        answerFour: 'Index 29',
+        correctAnswerNumber: 1,
         isFinalAssessment: false,
         onAnswerClick: () => {}
     },
     {
         questionNumber: 4,
-        questionText: 'For a hash table of size 8 with open addressing, what is the order of indices visited when inserting values 24, 8, 16, and 32 using double hashing?',
-        answerOne: '4, 2, 6, 0',
-        answerTwo: '0, 4, 1, 6',
-        answerThree: '2, 3, 5, 7',
-        answerFour: '1, 3, 5, 7',
+        questionText: 'What is the primary purpose of a hashing function in the hashing search algorithm?',
+        answerOne: 'To sort the data efficiently.',
+        answerTwo: 'To convert data into a fixed-size hash code for quick data retrieval.',
+        answerThree: 'To create a backup of the hash table.',
+        answerFour: 'To randomly distribute data across the hash table.',
         correctAnswerNumber: 2,
         isFinalAssessment: false,
         onAnswerClick: () => {}
     },
     {
         questionNumber: 5,
-        questionText: 'Given a hash table of size 10 with separate chaining, what is the order of indices visited when searching for the value 15 with a hash function?',
-        answerOne: '0',
-        answerTwo: '0, 1, 2',
-        answerThree: '5, 6, 7',
-        answerFour: '3, 4, 5',
+        questionText: 'During the insertion process, if the hashing function returns the same index for two different words, what method is commonly used to handle this situation?',
+        answerOne: 'Separate Chaining',
+        answerTwo: 'Open Addressing (Linear Probing)',
+        answerThree: 'Quadratic Probing',
+        answerFour: 'Cuckoo Hashing',
         correctAnswerNumber: 4,
         isFinalAssessment: false,
         onAnswerClick: () => {}
@@ -207,11 +207,11 @@ export const hashingQuizQuestions: AssessmentQuestionDetails[] = [
 ];
 
 export const hashingQuizHints = [
-    'Hint: Consider the impact of the hash function on the distribution of values in the hash table.',
-    'Hint: Reflect on the collision resolution technique used (linear probing, quadratic probing, or separate chaining).',
-    'Hint: Think about the order in which indices are probed or linked in the hash table.',
-    'Hint: Pay attention to the hash table size and how it affects the placement of values.',
-    'Hint: Focus on the steps involved in inserting or searching for a specific value in the hash table.'
+    'Remember the hashing function that maps the letter "c" to the number 3.',
+    'Utilize the hashing function to find the index for the word "lemon" (index 8).',
+    'Utilize the hashing function to find the index for the word "bird" (index 19).',
+    'Consider what hashing aims to achieve',
+    'In Cuckoo Hashing, what is commonly used when the hashing function returns the same index for two different words'
 ];
 
 
