@@ -11,6 +11,10 @@ export default function HomePageComponent() {
 
     const navigate = useNavigate();
 
+    const linearQuizDone = !!localStorage.getItem('linearQuizCompleted');
+    const binaryQuizDone = !!localStorage.getItem('binaryQuizCompleted');
+    const hashingQuizDone = !!localStorage.getItem('hashingQuizCompleted');
+
     const videos = [
         {
             id: 1,

@@ -35,14 +35,19 @@ export default function QuizComponent() {
         quizHints: []
     };
 
+    let QuizType = '';
+
     if(videoDetails.type === 'linear'){
-        quizData = linearQuizData
+        quizData = linearQuizData;
+        QuizType = 'Linear';
     }
     else if(videoDetails.type === 'binary'){
         quizData = binaryQuizData
+        QuizType = 'Binary';
     }
     else if(videoDetails.type === 'hashing'){
         quizData = hashingQuizData;
+        QuizType = 'Hashing'
     }
 
     const navigate = useNavigate();
@@ -76,14 +81,18 @@ export default function QuizComponent() {
     const handleComplete = () => {
         setShowScore(true);
 
-        if(algorithmType.type === 'linear'){
+
+        if(videoDetails.type === 'linear'){
             setLinearQuizCompleted(true)
+            localStorage.setItem('linearQuizCompleted', 'true');
         }
-        else if(algorithmType.type === 'binary'){
+        else if(videoDetails.type === 'binary'){
             setBinaryQuizCompleted(true)
+            localStorage.setItem('binaryQuizCompleted', 'true');
         }
-        else if(algorithmType.type === 'hashing'){
+        else if(videoDetails.type === 'hashing'){
             setHashingQuizCompleted(true)
+            localStorage.setItem('hashingQuizCompleted', 'true');
         }
 
     };
@@ -101,7 +110,7 @@ export default function QuizComponent() {
 
     return (
         <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
-            <h1 style={{ fontSize: '40px' }}>Linear Search Quiz</h1>
+            <h1 style={{ fontSize: '40px' }}>{QuizType} Search Quiz</h1>
 
             <div style={{ textAlign: 'center', margin: '20px 0' }}>
                 <Button variant="outlined" onClick={handleHintModalOpen}>
