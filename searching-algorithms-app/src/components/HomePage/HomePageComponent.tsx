@@ -17,7 +17,12 @@ export default function HomePageComponent() {
             
             <div className={styles.pageItems}>
                 {videos.map((video, i) => (
-                    <VideoCardComponent key={i} url={video.url} title={video.title} description={video.description} />
+                    <VideoCardComponent key={i} 
+                        url={video.url} 
+                        title={video.title} 
+                        description={video.description} 
+                        text={video.text} 
+                    />
                 ))}
             </div>
         </div>

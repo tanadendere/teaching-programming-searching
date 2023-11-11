@@ -22,9 +22,9 @@ export default function VideoCardComponent(videoDetails: VideoCardDetails) {
                 <CardActionArea style={{height: '100%'}} onClick={coursesPage} >
                     <CardMedia 
                         component="img"
-                        height="50%"
+                        height="40%"
                         image={targetUrl}
-                        width="50vh"
+                        width="100%"
                         
                     />
                     <CardContent >

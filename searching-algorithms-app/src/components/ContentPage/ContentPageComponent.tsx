@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect, useState, lazy } from 'react';
 import Tabs from '@mui/joy/Tabs';
 import TabList from '@mui/joy/TabList';
 import Tab from '@mui/joy/Tab';
@@ -12,7 +12,12 @@ import QuizComponent from "@/components/Quiz/QuizComponent";
 import { useNavigate } from "react-router-dom";
 import { VideoCardDetails } from '@/app/interfaces/video-card-details';
 
+// import LessonMarkdown from "@/app/resources/linear_search.mdx"
+
 import styles from '../../styles/contentpage.module.css'
+import ReactMarkdown from 'react-markdown';
+
+
 
 export default function ContentPageComponent() {
     const topicTitle = 'Linear Search';
@@ -21,6 +26,16 @@ export default function ContentPageComponent() {
 
     const details_string = localStorage.getItem('videoDetails') || ''
     const videoDetails: VideoCardDetails = JSON.parse(details_string);
+
+    const LessonMarkdown = lazy(() => import(`@/app/resources/${videoDetails.text}`))
+    // const [markdownContent, setMarkdownContent] = useState("");
+
+    // useEffect(() => {
+    //     fetch(lessonContent)
+    //     .then((res) => res.text())
+    //     .then((text) => {setMarkdownContent(text); console.log(text)})
+    // }, [])
+    
 
     const navigate = useNavigate();
 
@@ -62,7 +77,7 @@ export default function ContentPageComponent() {
                     alignment='left'
                     buttonEvent={handleHomeButton}/>
                 <div style={{paddingTop: '10px'}}>
-                    <VideoDescriptionComponent/>
+                    <LessonMarkdown />
                 </div>
                 <ButtonComponent 
                     className={styles.quizButton}

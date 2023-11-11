@@ -1,0 +1,51 @@
+## Search Algorithm: Hashing
+
+Hashing search algorithm involves:
+- Converting data into a fixed-size hash code, which serves as an **index for efficient data retrieval**
+- **Quick data lookup**
+- It's commonly used to **optimize search operations**
+- Known for its **fast and constant-time access to stored values.**
+
+In order to person the hashing search algorithm, we need:
+1. Hash table
+2. Hashing Function
+
+In the demonstration we are going to use a hashing function that maps the letters of the alphabet to the numbers 1 to 26. The hash table consists of 26 available slots.
+
+<img src="./images/hashing/5.png" alt="drawing" width="700" height="400"/>
+
+## Inserting into Hash Table
+Before we are able to perform searching from a hash table we are going to go through the process of inserting into a hash table. We'll start by inserting the word **cat**.
+
+When the word **cat** goes through the hashing function, the hashing function returns index 3
+<img src="./images/hashing/7.png" alt="drawing" width="700" height="400"/>
+We therefore insert the word **cat** in index 3 of the hash table.
+<img src="./images/hashing/8.png" alt="drawing" width="700" height="400"/>
+When inserting the word **box**, the hashing function returns the index 2 and is therefore inserted in index 2 in the hash table.
+<img src="./images/hashing/12.png" alt="drawing" width="700" height="400"/>
+
+## Searching from Hash Table
+Now we are going to perform searching from a hash table. The words that we are going to be searching for are:
+1. cat
+2. box
+3. book
+4. egg
+
+How we go about looking for the words is almost the reserve of how we inserted into the hashing function.
+
+We are now going to look for the word **cat**.
+
+Firstly, we pass the word **cat** into the hashing function. The hashing function will return index 3. We then go to hash table and go directly to index 3 and we get back the word **cat**. The same process is followed when searching for the word **box**.
+<img src="./images/hashing/15.png" alt="drawing" width="700" height="400"/>
+
+We are now going to look for the word **book**.
+
+We pass the word **book** to the hashing function and it returns index 2. We then go to the hash table and look at index 2, but we find the word **box**. So the word **book** was not found.
+<img src="./images/hashing/17.png" alt="drawing" width="700" height="400"/>
+We do the same for the word **egg** - **egg** is passed into the hashing function and index 5 is returned. We then go to the hash table and look at index 5, but there's no word at index 5 in the hash table. So the word **egg** was not found.
+<img src="./images/hashing/19.png" alt="drawing" width="700" height="400"/>
+
+## Benefits of Hashing Search Algorithm
+- Faster retrieval
+	- Searching for the element takes the same amount of time as searching for the first element of an array.
+	- This is a constant time or O(1).
