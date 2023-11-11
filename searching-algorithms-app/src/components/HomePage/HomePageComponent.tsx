@@ -11,33 +11,6 @@ export default function HomePageComponent() {
 
     const navigate = useNavigate();
 
-    const linearQuizDone = !!localStorage.getItem('linearQuizCompleted');
-    const binaryQuizDone = !!localStorage.getItem('binaryQuizCompleted');
-    const hashingQuizDone = !!localStorage.getItem('hashingQuizCompleted');
-
-    const videos = [
-        {
-            id: 1,
-            videoUrl: 'Mno9uoYgghE',
-            heading: 'Video 1',
-            summary: 'Summary of Video 1 content.',
-            type: 'linear'
-        },
-        {
-            id: 2,
-            videoUrl: 'O24DIhigKBQ',
-            heading: 'Video 2',
-            summary: 'Summary of Video 2 content.',
-            type: 'binary'
-        },
-        {
-            id: 3,
-            videoUrl: 'iUH_KTPdEYg',
-            heading: 'Video 3',
-            summary: 'Summary of Video 3 content.',
-            type: 'hashing'
-        },
-    ];
     const handleAssessmentButton = () => {
         navigate('/assessment');
     }
@@ -48,7 +21,6 @@ export default function HomePageComponent() {
                 <h1>Learn2Search</h1>
             </div>
 
-            <h1> Searching Algorithm System</h1>
             <ButtonComponent
                 className={styles.quizButton}
                 text='Start Final Assessment'

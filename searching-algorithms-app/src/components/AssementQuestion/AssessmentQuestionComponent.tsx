@@ -72,7 +72,7 @@ export default function AssessmentQuestionComponent({questionNumber, questionTex
                     <DialogContent>
                         <DialogContentText>
                             {selectedAnswer === correctAnswerNumber
-                                ? 'Well done! You selected the correct answer.'
+                                ? 'Well done! You selected the correct answer. You may proceed to the next question'
                                 : 'Oops! You selected the wrong answer. Please try again.'}
                         </DialogContentText>
                     </DialogContent>

@@ -37,15 +37,15 @@ export default function QuizComponent() {
 
     let QuizType = '';
 
-    if(videoDetails.type === 'linear'){
+    if(videoDetails.title === 'Linear Search'){
         quizData = linearQuizData;
         QuizType = 'Linear';
     }
-    else if(videoDetails.type === 'binary'){
+    else if(videoDetails.title === 'Binary Search'){
         quizData = binaryQuizData
         QuizType = 'Binary';
     }
-    else if(videoDetails.type === 'hashing'){
+    else if(videoDetails.title === 'Hashing Search'){
         quizData = hashingQuizData;
         QuizType = 'Hashing'
     }
@@ -82,15 +82,15 @@ export default function QuizComponent() {
         setShowScore(true);
 
 
-        if(videoDetails.type === 'linear'){
+        if(videoDetails.title === 'Linear Search'){
             setLinearQuizCompleted(true)
             localStorage.setItem('linearQuizCompleted', 'true');
         }
-        else if(videoDetails.type === 'binary'){
+        else if(videoDetails.title === 'Binary Search'){
             setBinaryQuizCompleted(true)
             localStorage.setItem('binaryQuizCompleted', 'true');
         }
-        else if(videoDetails.type === 'hashing'){
+        else if(videoDetails.title === 'Hashing Search'){
             setHashingQuizCompleted(true)
             localStorage.setItem('hashingQuizCompleted', 'true');
         }
@@ -139,12 +139,6 @@ export default function QuizComponent() {
                 isFinalAssessment={quizData.quizQuestions[currentQuestion].isFinalAssessment}
                 onAnswerClick={handleAnswerClick}
             />
-
-            { currentQuestion > 0 && currentQuestion < quizData.quizQuestions.length &&  <div style={{ marginTop: '30px' }}>
-                <Button variant="contained" color="primary" onClick={handlePreviousQuestion}>
-                    Previous
-                </Button>
-            </div>}
 
             { currentQuestion < quizData.quizQuestions.length - 1 && <div style={{ marginTop: '15px' }}>
                 <Button variant="contained" color="primary" onClick={handleNextQuestion}>
