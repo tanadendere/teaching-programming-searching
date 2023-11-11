@@ -15,7 +15,6 @@ import { VideoCardDetails } from '@/app/interfaces/video-card-details';
 // import LessonMarkdown from "@/app/resources/linear_search.mdx"
 
 import styles from '../../styles/contentpage.module.css'
-import ReactMarkdown from 'react-markdown';
 
 
 
