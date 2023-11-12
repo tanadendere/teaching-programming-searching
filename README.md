@@ -1,3 +1,6 @@
+# Learn2Search
+Screen designs of the website: https://www.figma.com/file/q6lsaJDSeHIPUdcFs86WWd/Untitled?type=design&node-id=0%3A1&mode=design&t=plRg8H0UODR6mJiu-1
+
 # Searching Algorithms App  Breakdown
 
 The system is contained within a container component:
